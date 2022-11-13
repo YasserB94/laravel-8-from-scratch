@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
+use App\Models\{Post,Category};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +18,16 @@ Route::get('/', function () {
         'posts' => Post::all()
     ]);
 });
-Route::get('posts/{postId}',function($id){
+Route::get('posts/{post:slug}',function(Post $post){
    return view('post',[
-       'post' => Post::findOrFail($id)
+       'post'=>$post
+//       'post' => Post::findOrFail($id)
    ]);
 });
 
+Route::get('categories/{category:slug}',function (Category $category){
+    return view('posts',[
+        'posts' => $category->posts
+        ]
+    );
+});
