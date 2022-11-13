@@ -16,10 +16,11 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $cat = $this->faker->sentence(4);
         return [
             //
-            'name'=>$this->faker->sentence,
-            'slug'=>$this->faker->slug
+            'name'=>$cat,
+            'slug'=>$cat
         ];
     }
 }

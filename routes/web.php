@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\{Post,Category};
+use App\Models\{Post,Category,User};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +15,7 @@ use App\Models\{Post,Category};
 
 Route::get('/', function () {
     return view('posts',[
-        'posts'=>Post::latest()->with('category','user')->get()//->Get the Categories here so the view does not make extra SQL xcalls
+        'posts'=>Post::latest()->with('category','author')->get()//->Get the Categories here so the view does not make extra SQL xcalls
         //'posts' => Post::all()
         // This results in extra queries for each post when it gets the category
     ]);
@@ -29,7 +29,13 @@ Route::get('posts/{post:slug}',function(Post $post){
 
 Route::get('categories/{category:slug}',function (Category $category){
     return view('posts',[
-        'posts' => $category->posts
+        'posts' => $category->posts->load(['category','author'])
+        ]
+    );
+});
+Route::get('authors/{author:username}',function (User $author){
+    return view('posts',[
+        'posts' => $author->posts->load(['category','author'])
         ]
     );
 });
