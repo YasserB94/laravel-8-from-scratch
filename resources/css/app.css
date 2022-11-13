@@ -1,34 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base{
-    body{
+@layer base {
+    body {
         @apply
         bg-slate-900
         text-slate-50
     }
-    main{
+
+    main {
         @apply
+        w-full
         p-4
         mx-auto
         lg:w-8/12
     }
-    p{
+
+    p {
         @apply
         leading-relaxed
     }
-    a{
-     @apply
-     duration-700
-         underline
-         decoration-0
-        hover:text-red-700
-    }
-    article+article{
+
+    a {
         @apply
-        border-t
-            border-slate-500
-        mt-12
-        pt-12
+        duration-700
+        underline
+        decoration-0
     }
+
 }
