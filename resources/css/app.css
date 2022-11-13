@@ -1,31 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
-    body {
-        @apply
-        bg-slate-900
-        text-slate-50
-    }
+/*@layer base {*/
+/*    body {*/
+/*        @apply*/
+/*        bg-slate-900*/
+/*        text-slate-50*/
+/*    }*/
 
-    main {
-        @apply
-        w-full
-        p-4
-        mx-auto
-        lg:w-8/12
-    }
+/*    main {*/
+/*        @apply*/
+/*        w-full*/
+/*        p-4*/
+/*        mx-auto*/
+/*        lg:w-8/12*/
+/*    }*/
 
-    p {
-        @apply
-        leading-relaxed
-    }
+/*    p {*/
+/*        @apply*/
+/*        leading-relaxed*/
+/*    }*/
 
-    a {
-        @apply
-        duration-700
-        underline
-        decoration-0
-    }
+/*    a {*/
+/*        @apply*/
+/*        duration-700*/
+/*        underline*/
+/*        decoration-0*/
+/*    }*/
 
-}
+/*}*/

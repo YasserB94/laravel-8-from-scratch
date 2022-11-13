@@ -1,11 +1,20 @@
 <x-layout>
-    <h1>Welcome!</h1>
-    <p class="mb-5">{{count($posts)}} posts to read!</p>
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        @foreach($posts as $post)
-            <x-post-card :post="$post" />
-        @endforeach
-    </div>
+    @include('_posts-header')
+
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        <x-post-feature-card/>
+        <div class="lg:grid lg:grid-cols-2">
+            <x-post-card/>
+            <x-post-card/>
+        </div>
+        <div class="lg:grid lg:grid-cols-3">
+            <x-post-card/>
+            <x-post-card/>
+            <x-post-card/>
+        </div>
+    </main>
+
+
 </x-layout>
 
 
