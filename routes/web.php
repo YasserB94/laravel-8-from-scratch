@@ -15,7 +15,7 @@ use App\Models\{Post,Category};
 
 Route::get('/', function () {
     return view('posts',[
-        'posts'=>Post::with('category')->get()//->Get the Categories here so the view does not make extra SQL xcalls
+        'posts'=>Post::latest()->with('category','user')->get()//->Get the Categories here so the view does not make extra SQL xcalls
         //'posts' => Post::all()
         // This results in extra queries for each post when it gets the category
     ]);
