@@ -16,11 +16,11 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $cat = $this->faker->sentence(4);
+        $cat = $this->faker->sentence(1);
         return [
             //
             'name'=>$cat,
-            'slug'=>$cat
+            'slug'=>preg_replace('/\s+/', '-', $cat)//Replace spaces with dashes
         ];
     }
 }
