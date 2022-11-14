@@ -60,6 +60,7 @@
                         type="text"
                         name="search"
                         placeholder="Find something"
+                        value="{{request('search')}}"
                         class="bg-transparent placeholder-black font-semibold text-sm"
                     />
                 </form>

@@ -14,9 +14,14 @@ use App\Models\{Post,Category,User};
 */
 
 Route::get('/', function () {
+    $posts = Post::latest();
+    if(request('search')){
+        $posts->where('title','like','%'.request('search').'%')
+            ->orWhere('body','like','%'.request('search').'%');
+    }
 
     return view('posts',[
-        'posts'=>Post::latest()->get(),//->Get the Categories here so the view does not make extra SQL xcalls
+        'posts'=>$posts->get(),//->Get the Categories here so the view does not make extra SQL xcalls
         //'posts' => Post::all()
         // This results in extra queries for each post when it gets the category
         'categories'=>Category::all()
