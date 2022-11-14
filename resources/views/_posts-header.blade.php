@@ -1,21 +1,18 @@
 @props(['categories','currentCategory'])
-<header class="max-w-xl mx-auto mt-20 text-center">
+<header class="max-w-xl mx-auto mt-5 text-center">
     <h1 class="text-4xl">
-        Latest <span class="text-blue-500">Laravel From Scratch</span> News
+        Yasser's First
+        <x-text-animation class="text-blue-500 duration-300 transition">Laravel</x-text-animation>
+        Blog
     </h1>
 
-    <h2 class="inline-flex mt-2">
-        By Lary Laracore
-        <img src="/images/lary-head.svg" alt="Head of Lary the mascot"/>
-    </h2>
-
-    <p class="text-sm mt-14">
-        Another year. Another update. We're refreshing the popular Laravel
-        series with new content. I'm going to keep you guys up to speed with
-        what's going on!
+    <p class="inline-flex duration-300 text-sm hover:text-blue-500 hover:scale-110">
+        <img src="/images/lary-head.svg" class="h-4 w-4" alt="Head of Lary the mascot"/>
+        <a class="mx-2" href="https://laracasts.com/series/laravel-8-from-scratch/" target="_blank">Visit the Laravel
+            From Scratch Series on Laracasts </a>
+        <img src="/images/lary-head.svg" class="h-4 w-4" alt="Head of Lary the mascot"/>
     </p>
-
-    <div class="space-y-2 w-full lg:space-y-0 lg:inline-flex lg:space-x-4 mt-8">
+    <div class="space-y-2 w-full lg:space-y-0 lg:inline-flex lg:space-x-4 mt-2">
         <!--  Category -->
         <div
             class="relative w-full lg:inline-flex rounded-xl bg-gray-100"
@@ -26,7 +23,8 @@
                         class="appearance-none flex w-full py-2 pl-3 pr-9 text-sm font-semibold"
                     >
                         {{isset($currentCategory)? $currentCategory->name : 'Categories'}}
-<x-icon name="down-arrow" class="absolute -translate-y-1/2 top-1/2 pointer-events-none"></x-icon>
+                        <x-icon name="down-arrow"
+                                class="absolute -translate-y-1/2 top-1/2 pointer-events-none"></x-icon>
                     </button>
                 </x-slot:trigger>
                 <x-dropdown-list-item href="/">All</x-dropdown-list-item>
@@ -34,7 +32,8 @@
                     @if(isset($currentCategory)&&$category->id==$currentCategory->id)
                         @continue
                     @endif
-                    <x-dropdown-list-item href="/categories/{{$category->slug}}">{{ucfirst($category->name)}}</x-dropdown-list-item>
+                    <x-dropdown-list-item
+                        href="/categories/{{$category->slug}}">{{ucfirst($category->name)}}</x-dropdown-list-item>
                 @endforeach
             </x-dropdown>
             <!-- Other Filters -->
@@ -66,4 +65,5 @@
                 </form>
             </div>
         </div>
+    </div>
 </header>

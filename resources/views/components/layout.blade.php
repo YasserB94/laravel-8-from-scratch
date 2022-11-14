@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/app.css')
     {{--        <link rel="stylesheet" href="/app.css">--}}
-    <title>My First Laravel Blog!</title>
+    <title>Yasser's First Laravel Blog!</title>
     @vite('resources/js/app.js')
 </head>
 <body class="antialiased">
 <body style="font-family: Open Sans, sans-serif">
-<section class="px-6 py-8">
+<header class="px-6 py-8">
 <nav class="md:flex md:justify-between md:items-center">
     <div>
         <a href="/">
@@ -34,7 +34,7 @@
         </a>
     </div>
 </nav>
-
+</header>
     {{$slot}}
 
 <footer
@@ -75,6 +75,5 @@
         </div>
     </div>
 </footer>
-</section>
 </body>
 

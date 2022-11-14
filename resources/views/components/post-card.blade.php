@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <h1 class="text-3xl">
+                    <h1 class="text-2xl h-16">
                         <a href="/posts/{{$post->slug}}">
                             {{$post->title}}
                         </a>
@@ -30,7 +30,7 @@
                 </div>
             </header>
 
-            <div class="text-sm mt-4">
+            <div class="text-sm mt-4 h-14 overflow-y-clip">
                 <p>
                     {{$post->summary}}
                 </p>
@@ -49,12 +49,14 @@
 
                     </div>
                 </div>
+                <a href="/posts/{{$post->slug}}">
+                    <button class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300
+                            rounded-full py-2 px-4 lg:px-6">
 
-                <div class="w-2/5  text-right">
-                    <a href="/posts/{{$post->slug}}"
-                       class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-4 md:px-8"
-                    >Read More</a>
-                </div>
+                        Read More
+                    </button>
+                </a>
+
             </footer>
         </div>
     </div>
