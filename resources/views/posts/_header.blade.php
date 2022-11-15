@@ -37,6 +37,10 @@
                 class="relative flex  lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2"
             >
                 <form method="GET" action="#">
+                    @if(request('category')??false)
+                        {{--If there is already a category selected in the request include it into the view--}}
+                        <input type="hidden" name="category" value="{{request('category')}}"/>
+                    @endif
                     <input
                         type="text"
                         name="search"

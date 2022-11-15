@@ -1,4 +1,4 @@
 @props(['category'])
-<a href="/?category={{$category->slug}}"
+<a href="/?category={{$category->slug}}&{{http_build_query(request()->except('category'))}}"
    class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
 >{{$category->name}}</a>
