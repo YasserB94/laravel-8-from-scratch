@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::latest()->filter(request(['search','category']))->get();
-        return view('posts',[
-            'posts'=>$posts,//->Get the Categories here so the view does not make extra SQL xcalls
+        $posts = Post::latest()->filter(request(['search','category','author']))->get();
+        return view('posts.index',[
+            'posts'=>$posts,
             //'posts' => Post::all()
             // This results in extra queries for each post when it gets the category
             //'categories'=>Category::all(),
@@ -18,7 +18,7 @@ class PostController extends Controller
         ]);
     }
     public function show(Post $post){
-        return view('post',[
+        return view('posts.show',[
             'post'=>$post,
 //       'post' => Post::findOrFail($id) We can inject into our function to ommit this call
         ]);
