@@ -40,6 +40,7 @@
                     @if(request('category')??false)
                         {{--If there is already a category selected in the request include it into the view--}}
                         <input type="hidden" name="category" value="{{request('category')}}"/>
+                        <input type="hidden" name="author" value="{{request('author')}}"/>
                     @endif
                     <input
                         type="text"
