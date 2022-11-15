@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
@@ -37,12 +38,12 @@ class Post extends Model
         });
     }
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
