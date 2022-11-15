@@ -28,14 +28,19 @@ class Post extends Model
             $query->where('slug', $category)
             );
         });
+        $query->when($filters['author'] ?? false, function (Builder $query, $authorUsername) {
+            $query->whereHas('author', fn(Builder $query) =>
+            $query->where('username', $authorUsername)
+            );
+        });
     }
 
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function author()
+    public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }

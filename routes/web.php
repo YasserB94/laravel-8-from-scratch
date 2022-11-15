@@ -17,14 +17,14 @@ use \App\Http\Controllers\{PostController,Controller};
 Route::get('/',[PostController::class,'index']);
 Route::get('posts/{post:slug}',[PostController::class,'show']);
 
-Route::get('authors/{author:username}',function (User $author){
-    return view('posts',[
-        'posts' => $author->posts
-            //'categories'=>Category::all()
-
-        ]
-    );
-});
+//Route::get('authors/{author:username}',function (User $author){
+//    return view('posts',[
+//        'posts' => $author->posts
+//            //'categories'=>Category::all()
+//
+//        ]
+//    );
+//});
 //Route::get('categories/{category:slug}',function (Category $category){
 //    return view('posts',[
 //        'posts' => $category->posts,
