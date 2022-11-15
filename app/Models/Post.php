@@ -16,11 +16,11 @@ class Post extends Model
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters['search'] ?? false, function (Builder $query, $search) {
-            $query->where(fn(Builder $query)=>
-            $query->where('title', 'like', '%' . $search . '%')
+            $query->where(fn(Builder $query) => $query->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%')
             );
-                });
+            //TODO::Extract arrow function into normal function to improve readability
+        });
 
 //        if($filters['search'] ?? false)
 //        $query->where('title','like','%'.request('search').'%')
@@ -32,8 +32,7 @@ class Post extends Model
             );
         });
         $query->when($filters['author'] ?? false, function (Builder $query, $authorUsername) {
-            $query->whereHas('author', fn(Builder $query) =>
-            $query->where('username', $authorUsername)
+            $query->whereHas('author', fn(Builder $query) => $query->where('username', $authorUsername)
             );
         });
     }
