@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //use App\Models\{Post,Category,User};
-use App\Http\Controllers\{PostController, RegisterController};
+use App\Http\Controllers\{PostController, RegisterController, SessionController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,20 +16,9 @@ use App\Http\Controllers\{PostController, RegisterController};
 
 Route::get('/',[PostController::class,'index']);
 Route::get('posts/{post:slug}',[PostController::class,'show']);
-Route::get('register',[RegisterController::class,'create']);
-//Route::get('authors/{author:username}',function (User $author){
-//    return view('posts',[
-//        'posts' => $author->posts
-//            //'categories'=>Category::all()
-//
-//        ]
-//    );
-//});
-//Route::get('categories/{category:slug}',function (Category $category){
-//    return view('posts',[
-//        'posts' => $category->posts,
-//        'currentCategory'=>$category
-//            'categories'=>Category::all()
-//        ]
-//    );
-//});
+
+Route::get('register',[RegisterController::class,'create'])->middleware('guest');
+Route::post('register',[RegisterController::class,'store'])->middleware('guest');
+
+Route::post('logout',[SessionController::class,'destroy']);
+
