@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Category::truncate();
         Post::truncate();
-        Post::factory(5)->create();
-        Post::factory(5)->create(['user_id'=>1]);
-        Post::factory(5)->create(['category_id'=>1]);
+        Post::factory(5)->create(['user_id'=>1,'category_id'=>4]);
         Post::factory(5)->create(['user_id'=>2,'category_id'=>2]);
         Post::factory(5)->create(['user_id'=>2,'category_id'=>4]);
         Post::factory(5)->create(['user_id'=>1,'category_id'=>3]);
+        Post::factory(5)->create(['user_id'=>3,'category_id'=>3]);
+        Post::factory(5)->create(['user_id'=>3,'category_id'=>2]);
     }
 }
