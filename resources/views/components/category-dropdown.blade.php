@@ -14,7 +14,7 @@
             @continue
         @endif
         <x-dropdown-list-item
-            href="/?category={{$category->slug}}&{{http_build_query(request()->except('category'))}}"
+            href="/?category={{$category->slug}}"{{--&{{http_build_query(request()->except('category'))}}--}}
         >
             {{ucfirst($category->name)}}
         </x-dropdown-list-item>
