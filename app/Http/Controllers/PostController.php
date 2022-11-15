@@ -18,6 +18,7 @@ class PostController extends Controller
         ]);
     }
     public function show(Post $post){
+
         return view('posts.show',[
             'post'=>$post,
 //       'post' => Post::findOrFail($id) We can inject into our function to ommit this call
