@@ -17,25 +17,7 @@
         <div
             class="relative w-full lg:inline-flex rounded-xl bg-gray-100"
         >
-            <x-dropdown>
-                <x-slot:trigger>
-                    <button
-                        class="appearance-none flex w-full py-2 pl-3 pr-9 text-sm font-semibold"
-                    >
-                        {{isset($currentCategory)? $currentCategory->name : 'Categories'}}
-                        <x-icon name="down-arrow"
-                                class="absolute -translate-y-1/2 top-1/2 pointer-events-none"></x-icon>
-                    </button>
-                </x-slot:trigger>
-                <x-dropdown-list-item href="/">All</x-dropdown-list-item>
-                @foreach($categories as $category)
-                    @if(isset($currentCategory)&&$category->id==$currentCategory->id)
-                        @continue
-                    @endif
-                    <x-dropdown-list-item
-                        href="/categories/{{$category->slug}}">{{ucfirst($category->name)}}</x-dropdown-list-item>
-                @endforeach
-            </x-dropdown>
+            <x-category-dropdown></x-category-dropdown>
             <!-- Other Filters -->
             <div
                 class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl"
