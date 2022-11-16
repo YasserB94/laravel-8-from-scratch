@@ -13,7 +13,7 @@
         </header>
         <div>
             <textarea required placeholder="what are you thinking about ?" name="body"
-                      class="w-11/12 p-2 ml-auto block rounded  focus:border-indigo-500 h-20 resize-none"></textarea>
+                      class="w-11/12 p-2 ml-auto block rounded focus:border-y-blue-900 text-gray-500  focus:border-blue-500 h-20 resize-none"></textarea>
             @error('body')
             <span class="ml-auto text-red-500 text-xs">{{$message}}</span>
             @enderror
