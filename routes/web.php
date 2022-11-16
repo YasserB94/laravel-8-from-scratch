@@ -31,3 +31,4 @@ Route::post('sessions',[SessionController::class,'store'])->middleware('guest');
 Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
 //NewsLetter
 Route::post('subscribe',[NewsletterController::class,'subscribe']);
+Route::post('/posts/subscribe',[NewsletterController::class,'subscribe']);

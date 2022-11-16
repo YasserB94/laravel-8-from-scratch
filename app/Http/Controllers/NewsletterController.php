@@ -24,7 +24,7 @@ class NewsletterController extends Controller
                 'email'=>'Oops! something went wrong. We are sorry'
             ]);
         }
-    return redirect('/')->with('success','Congratulations! You are now subscribed to the newsletter');
+    return back()->with('success','Congratulations! You are now subscribed to the newsletter');
     }
 
 }
