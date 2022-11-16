@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //use App\Models\{Post,Category,User};
-use App\Http\Controllers\{PostController, RegisterController, SessionController};
+use App\Http\Controllers\{CommentController, PostController, RegisterController, SessionController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,7 @@ use App\Http\Controllers\{PostController, RegisterController, SessionController}
 //POSTS
 Route::get('/',[PostController::class,'index']);
 Route::get('posts/{post:slug}',[PostController::class,'show']);
+Route::post('posts/{post:slug}/comments',[CommentController::class,'store']);
 //REGISTER
 Route::get('register',[RegisterController::class,'create'])->middleware('guest');
 Route::post('register',[RegisterController::class,'store'])->middleware('guest');

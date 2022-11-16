@@ -6,7 +6,8 @@
                     <img src="/images/illustration-1.png" alt="" class="rounded-xl">
 
                     <p class="mt-4 block text-gray-400 text-xs">
-                        Published <time>{{ $post->created_at->diffForHumans()}}</time>
+                        Published
+                        <time>{{ $post->created_at->diffForHumans()}}</time>
 
                     </p>
 
@@ -62,20 +63,10 @@
                 </div>
                 <section class=" mt-4 space-y-2 col-span-8 col-start-5">
                     <h2 class="text-xl uppercase">Comments</h2>
-                    <form method="POST" action="#" class="p-4 space-y-2 rounded-xl w-full border border-gray-200 bg-gray-100">
-                        <header class="flex items-center">
-                            <img class="rounded-full max-h-16 aspect-square shadow-xl" src="https://i.pravatar.cc/100?u=5" alt="User avatar">
-                            <h3>Share your toughts!</h3>
-                        </header>
-
-                        <div>
-                            <textarea name="body" class="w-11/12 p-2 ml-auto block rounded  focus:border-indigo-500 h-20 resize-none"></textarea>
-                        </div>
-                        <button class="bg-blue-400 block ml-auto border-2 border-gray-200 text-gray-100 hover:bg-gray-100 transition-all duration-300 hover:border-blue-500 hover:text-blue-700 px-4 py-2 rounded-xl text-center">Comment</button>
-                    </form>
-@foreach($post->comments as $comment)
-    <x-post-comment :comment="$comment"></x-post-comment>
-@endforeach
+                    <x-_new-comment-form :post="$post"/>
+                    @foreach($post->comments as $comment)
+                        <x-post-comment :comment="$comment"></x-post-comment>
+                    @endforeach
                 </section>
             </article>
         </main>
