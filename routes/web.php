@@ -14,12 +14,15 @@ use App\Http\Controllers\{PostController, RegisterController, SessionController}
 |
 */
 
+
+//POSTS
 Route::get('/',[PostController::class,'index']);
 Route::get('posts/{post:slug}',[PostController::class,'show']);
-
+//REGISTER
 Route::get('register',[RegisterController::class,'create'])->middleware('guest');
 Route::post('register',[RegisterController::class,'store'])->middleware('guest');
-
-Route::post('login',[SessionController::class,'create'])->middleware('guest');
+//SESSION
+Route::get('login',[SessionController::class,'create'])->middleware('guest');
+Route::post('sessions',[SessionController::class,'store'])->middleware('guest');
 Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
 
