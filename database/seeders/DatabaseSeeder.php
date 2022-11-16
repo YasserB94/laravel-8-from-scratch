@@ -17,10 +17,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        //Avoid duplicates
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
+
         $posts = 100;
         $categories = 8;
         $users = 12;

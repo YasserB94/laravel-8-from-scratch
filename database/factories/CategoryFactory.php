@@ -16,7 +16,7 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $cat = $this->faker->sentence(1);
+        $cat = $this->faker->unique()->word();
         return [
             //
             'name'=>$cat,
