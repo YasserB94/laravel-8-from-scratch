@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Models\{Post,Category,User};
-use App\Http\Controllers\{CommentController, PostController, RegisterController, SessionController};
+use App\Http\Controllers\{CommentController,
+    NewsletterController,
+    PostController,
+    RegisterController,
+    SessionController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,4 +29,5 @@ Route::post('register',[RegisterController::class,'store'])->middleware('guest')
 Route::get('login',[SessionController::class,'create'])->middleware('guest');
 Route::post('sessions',[SessionController::class,'store'])->middleware('guest');
 Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
-
+//NewsLetter
+Route::post('subscribe',[NewsletterController::class,'subscribe']);
