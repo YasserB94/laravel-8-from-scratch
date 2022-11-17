@@ -7,8 +7,7 @@
         <a href="/posts/{{$post->slug}}" class="block">
 
             <img
-                src="/images/illustration-3.png"
-                alt="Blog Post illustration"
+                src="{{asset('storage/'.$post->thumbnail)}}" alt="This post has no thumbnail"
                 class="rounded-xl"
             />
         </a>
@@ -41,7 +40,7 @@
 
             <footer class="flex w-full justify-between items-center mt-8">
                 <div class="flex items-center w-3/5 text-sm">
-                    <img src="/images/lary-avatar.svg" alt="Lary avatar"/>
+                    <img src="/storage/{{$post->thumbnail}}" alt="Lary avatar"/>
                     <div class="ml-3">
                         <h5 class="font-bold">
                             <a href="?author={{$post->author->username}}&{{http_build_query(request()->except('author'))}}">

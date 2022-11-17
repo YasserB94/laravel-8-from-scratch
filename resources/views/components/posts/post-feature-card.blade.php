@@ -6,7 +6,7 @@
 
         <div class="flex-1 lg:mr-8">
             <a href="/posts/{{$post->slug}}">
-                <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+                <img src="/storage/{{$post->thumbnail}}" alt="This post has no image" class="rounded-xl">
             </a>
         </div>
 

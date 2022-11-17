@@ -23,13 +23,14 @@ class PostController extends Controller
         return view('posts.create');
     }
     public function store(){
-
         $attributes = request()->validate([
            'title'=>['required','min:4'],
            'summary'=>['required','min:10'],
+           'thumbnail'=>['required','image'],
            'body'=>['required','min:10'],
             'category_id'=>['required',Rule::exists('categories','id')]
         ]);
+        $attributes['thumbnail'] = request()->file('thumbnail')->storePublicly('thumbnails',['disk'=>'public']);
         $attributes['user_id'] = auth()->id();
         Post::create($attributes);
         return redirect('/')->with('success','Post has been created!');
