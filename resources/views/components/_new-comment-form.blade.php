@@ -21,11 +21,7 @@
             @enderror
         </div>
 
-        <button
-            form="newcomment"
-            class="bg-blue-400 block ml-auto border-2 border-gray-200 text-gray-100 hover:bg-gray-100 transition-all duration-300 hover:border-blue-500 hover:text-blue-700 px-4 py-2 rounded-xl text-center">
-            Comment
-        </button>
+        <x-button-submit>Comment</x-button-submit>
     @else
         <header class="flex space-x-4 items-center">
             <img class="rounded-full max-h-16 aspect-square shadow-xl" src="https://i.pravatar.cc/100?u={{$post->id}}}"
