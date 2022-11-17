@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,26 @@ class Post extends Model
 
     protected $guarded = ['id'];//Do not allow this value to be updated from the App
     protected $with = ['category', 'author'];//Always Come with these relationships(Prevent too many Database requests)
+
+    //When a Post is created -> Boot
+    protected static function boot()
+    {
+        //Run Boot in the Parent (Model class)
+        parent::boot();
+        //Register a callback function to run upon creation
+        static::creating(
+            //Callback function takes the post being created
+            function ($post) {
+                //Produce the slug based on the title
+                //Using Laravel Str::slug Helper function
+                $slug = Str::slug($post->title);
+                //Check if the slug exists in the database
+                //If so, save the amount of identical slugs to $count
+                $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+                //Set the slug to the slug+count if it already exists
+                $post->slug = $count ? "{$slug}-{$count}" : $slug;
+            });
+    }
 
     public function scopeFilter(Builder $query, array $filters)
     {
@@ -48,7 +69,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function comments():HasMany
+
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }
