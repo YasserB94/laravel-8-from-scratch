@@ -87,6 +87,6 @@
         </div>
     </div>
 </footer>
-<x-flash/>
+<x-global.flash/>
 </body>
 

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout.layout>
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
@@ -48,7 +48,7 @@
                         </a>
 
                         <div class="space-x-2">
-                            <x-category-button :category="$post->category"></x-category-button>
+                            <x-global.category-button :category="$post->category"></x-global.category-button>
                         </div>
                     </div>
 
@@ -62,12 +62,12 @@
                 </div>
                 <section class=" mt-4 space-y-2 col-span-8 col-start-5">
                     <h2 class="text-xl uppercase">Comments</h2>
-                    <x-_new-comment-form :post="$post"/>
+                    <x-posts._new-comment-form :post="$post"/>
                     @foreach($post->comments as $comment)
-                        <x-post-comment :comment="$comment"></x-post-comment>
+                        <x-posts.post-comment :comment="$comment"></x-posts.post-comment>
                     @endforeach
                 </section>
             </article>
         </main>
     </section>
-</x-layout>
+</x-layout.layout>

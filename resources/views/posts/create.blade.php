@@ -1,6 +1,6 @@
-<x-layout>
+<x-layout.layout>
     <section class="px-6 py-8">
-        <x-panel class="max-w-4xl mx-auto">
+        <x-layout.panel class="max-w-4xl mx-auto">
             <form method="POSTS" action="/admin/posts">
                 @csrf
                 <div>
@@ -71,8 +71,8 @@
                     <p class="text-red-500 text-xs">{{$message}}</p>
                     @enderror
                 </div>
-                <x-button-submit class="mt-2">Publish</x-button-submit>
+                <x-forms.button-submit class="mt-2">Publish</x-forms.button-submit>
             </form>
-        </x-panel>
+        </x-layout.panel>
     </section>
-</x-layout>
+</x-layout.layout>

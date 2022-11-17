@@ -1,7 +1,7 @@
 <header class="max-w-xl mx-auto mt-5 text-center">
     <h1 class="text-4xl">
         Yasser's First
-        <x-text-animation class="text-blue-500 duration-300 transition">Laravel</x-text-animation>
+        <x-alpine.text-animation class="text-blue-500 duration-300 transition">Laravel</x-alpine.text-animation>
         Blog
     </h1>
 
@@ -16,6 +16,7 @@
         <div
             class="relative w-full lg:inline-flex rounded-xl bg-gray-100"
         >
+            <!--HAS CLASS-->
             <x-category-dropdown></x-category-dropdown>
             <!-- Other Filters -->
             <div
@@ -29,7 +30,7 @@
                     <option value="bar">Bar</option>
                 </select>
 
-                <x-icon name="down-arrow" class="absolute -translate-y-1/2 top-1/2 pointer-events-none"></x-icon>
+                <x-assets.icon name="down-arrow" class="absolute -translate-y-1/2 top-1/2 pointer-events-none"></x-assets.icon>
             </div>
 
             <!-- Search -->

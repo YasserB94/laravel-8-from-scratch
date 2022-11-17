@@ -21,7 +21,7 @@
             @enderror
         </div>
 
-        <x-button-submit>Comment</x-button-submit>
+        <x-forms.button-submit>Comment</x-forms.button-submit>
     @else
         <header class="flex space-x-4 items-center">
             <img class="rounded-full max-h-16 aspect-square shadow-xl" src="https://i.pravatar.cc/100?u={{$post->id}}}"
