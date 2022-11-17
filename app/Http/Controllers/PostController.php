@@ -30,6 +30,8 @@ class PostController extends Controller
            'body'=>['required','min:10'],
             'category_id'=>['required',Rule::exists('categories','id')]
         ]);
+
+        //TODO::ADD ALT TEXT OPTION
         $attributes['thumbnail'] = request()->file('thumbnail')->storePublicly('thumbnails',['disk'=>'public']);
         $attributes['user_id'] = auth()->id();
         Post::create($attributes);
