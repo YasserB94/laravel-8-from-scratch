@@ -33,3 +33,6 @@ Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
 //NewsLetter
 Route::post('subscribe',NewsletterController::class);
 Route::post('/posts/subscribe',NewsletterController::class);
+
+//ADMIN ROUTES
+Route::get('admin/posts/create',[PostController::class,'create'])->middleware('admin');
