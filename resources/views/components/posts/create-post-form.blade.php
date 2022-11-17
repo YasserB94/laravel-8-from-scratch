@@ -1,4 +1,4 @@
-<form method="POSTS" action="/admin/posts" {{ $attributes }}>
+<form method="POST" action="/admin/posts" {{ $attributes }}>
     @csrf
     <div>
         <label class="block text-sm uppercase font-semibold mt-2 ml-1"
@@ -51,14 +51,14 @@
     </div>
     <div>
         <label class="block text-sm uppercase font-semibold  mt-2 ml-1"
-               for="category">
+               for="category_id">
             Category
         </label>
         <select
                 class="border bg-transparent p-2 w-full resize-none rounded
                     outline-none outline-0 duration-150
                     focus:outline-1  focus:outline-gray-100 focus:shadow"
-                name="category"
+                name="category_id"
                 id="category"
                 required
         >
@@ -66,7 +66,7 @@
                 <option value="{{$category->id}}">{{$category->name}}</option>
             @endforeach
         </select>
-        @error('category')
+        @error('category_id')
         <p class="text-red-500 text-xs">{{$message}}</p>
         @enderror
     </div>
