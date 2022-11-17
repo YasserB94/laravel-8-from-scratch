@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout.layout>
     <section class="px-6 py-8">
         <main class="max-w-xl mx-auto border border-blue-100 shadow-2xl rounded-2xl">
             <form method="POST" action="/register" class=" space-y-2 shadow-md p-4">
@@ -82,4 +82,4 @@
 
         </main>
     </section>
-</x-layout>
+</x-layout.layout>

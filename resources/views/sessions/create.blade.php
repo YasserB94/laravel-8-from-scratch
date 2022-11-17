@@ -1,7 +1,8 @@
-<x-layout>
+<x-layout.layout>
     <section class="px-6 py-8">
-        <main class="max-w-xl mx-auto border border-blue-100 shadow-2xl rounded-2xl">
-            <form method="POST" action="/sessions" class=" space-y-2 shadow-md p-4">
+        <main>
+            <x-layout.panel>
+            <form method="POST" action="/sessions" class="space-y-2">
                 @csrf
                 <h1 class="text-center text-2xl uppercase font-bold">Login</h1>
 
@@ -35,13 +36,10 @@
                     @enderror
                 </div>
                 <div class="flex items-center justify-end">
-                    <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="submit">
-                        Login
-                    </button>
+                    <x-forms.button-submit>Login</x-forms.button-submit>
                 </div>
             </form>
+            </x-layout.panel>
         </main>
     </section>
-</x-layout>
+</x-layout.layout>
