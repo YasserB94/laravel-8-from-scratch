@@ -25,11 +25,21 @@
 
         <div class="flex items-center space-x-2 mt-8 md:mt-0">
             @auth()
-                <span class="font-bold uppercase">Hi, {{auth()->user()->name}} !</span>
-                <form method="POST"  action="/logout">
-                    @csrf
-                    <button type="submit" class="text-xs font-semibold text-blue-500">Logout</button>
-                </form>
+                <x-layout.dropdown class="max-w-xl">
+                    <x-slot:trigger>
+                        <button class="font-bold uppercase">Hi, {{auth()->user()->name}} !</button>
+                    </x-slot:trigger>
+                    <x-layout.dropdown-list-item href="/admin/posts/create"
+                                                 :active="request()->is('admin/posts/create')">Create a Post!
+                    </x-layout.dropdown-list-item>
+                    <x-layout.dropdown-list-item href="#"
+                                                 x-data="{}" @click.prevent="document.querySelector('#logout-form').submit();"
+                    >Logout
+                    </x-layout.dropdown-list-item>
+                    <form method="POST" action="/logout" id="logout-form">
+                        @csrf
+                    </form>
+                </x-layout.dropdown>
             @else
                 <a href="/register" class="text-xs font-bold mr-4 uppercase">Register</a>
                 <a href="/login"
@@ -77,11 +87,11 @@
                         <p class="text-red-500 text-xs">{{$message}}</p>
                         @enderror
                     </div>
-                <button
-                    type="submit"
-                    class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8">
-                    Subscribe
-                </button>
+                    <button
+                        type="submit"
+                        class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8">
+                        Subscribe
+                    </button>
                 </div>
             </form>
         </div>

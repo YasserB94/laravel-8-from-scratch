@@ -4,8 +4,7 @@
         <x-alpine.text-animation class="text-blue-500 duration-300 transition">Laravel</x-alpine.text-animation>
         Blog
     </h1>
-<a class="text-2xl"
-    href="/admin/posts/create">new</a>
+
     <p class="inline-flex duration-300 text-sm hover:text-blue-500 hover:scale-110">
         <img src="/images/lary-head.svg" class="h-4 w-4" alt="Head of Lary the mascot"/>
         <a class="mx-2" href="https://laracasts.com/series/laravel-8-from-scratch/" target="_blank">Visit the Laravel
