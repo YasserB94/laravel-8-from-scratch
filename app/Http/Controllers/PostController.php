@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -19,5 +21,17 @@ class PostController extends Controller
     }
     public function create(){
         return view('posts.create');
+    }
+    public function store(){
+
+        $attributes = request()->validate([
+           'title'=>['required','min:4'],
+           'summary'=>['required','min:10'],
+           'body'=>['required','min:10'],
+            'category_id'=>['required',Rule::exists('categories','id')]
+        ]);
+        $attributes['user_id'] = auth()->id();
+        Post::create($attributes);
+        return redirect('/')->with('success','Post has been created!');
     }
 }
