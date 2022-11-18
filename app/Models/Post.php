@@ -35,8 +35,24 @@ class Post extends Model
                 //Set the slug to the slug+count if it already exists
                 $post->slug = $count ? "{$slug}-{$count}" : $slug;
             });
-    }
+        //TODO:: Extract repeated callback function
+        static::updating(
+            function ($post) {
+            //Produce the slug based on the title
+            //Using Laravel Str::slug Helper function
+            $slug = Str::slug($post->title);
+            //Check if the slug exists in the database
+            //If so, save the amount of identical slugs to $count
+            $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+            //Set the slug to the slug+count if it already exists
+            $post->slug = $count ? "{$slug}-{$count}" : $slug;
+        }
 
+        );
+    }
+    protected function makeSlugFromTitle(Post $post){
+
+    }
     public function scopeFilter(Builder $query, array $filters)
     {
         //NOTE:: use -> Function passing

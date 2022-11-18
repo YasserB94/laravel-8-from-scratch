@@ -27,17 +27,19 @@ class AdminPostController extends Controller
             'post' => $post
         ]);
     }
-
+    public function store()
+    {
+        $post = new Post();
+        $attributes = array_merge($this->validatePost($post),[
+           'user_id'=>auth()->id(),
+           'thumbnail'=>request()->file('thumbnail')->storePublicly('thumbnails', ['disk' => 'public'])
+        ]);
+        Post::create($attributes);
+        return redirect('/')->with('success', 'Post has been created!');
+    }
     public function update(Post $post)
     {
-
-        $attributes = request()->validate([
-            'title' => ['required', 'min:4'],
-            'summary' => ['required', 'min:10'],
-            'thumbnail' => ['image'],
-            'body' => ['required', 'min:10'],
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
+        $attributes = $this->validatePost($post);
         if(isset($attributes['thumbnail'])) {
             $attributes['thumbnail']= \request()->file('thumbnail')->storePublicly('thumbnails',['disk' => 'public']);
         }
@@ -48,20 +50,21 @@ class AdminPostController extends Controller
         $post->delete();
         return redirect()->back()->with('success','Post has been deleted');
     }
-    public function store()
+
+    /**
+     * @param Post $post
+     * @return array
+     */
+    public function validatePost(?Post $post = null): array
     {
-        $attributes = request()->validate([
+        $post ??= new Post();
+        return request()->validate([
             'title' => ['required', 'min:4'],
             'summary' => ['required', 'min:10'],
-            'thumbnail' => ['required', 'image'],
+            'thumbnail' => $post->exists() ? ['image'] : ['required', 'image'],
             'body' => ['required', 'min:10'],
             'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
-
-        //TODO::ADD ALT TEXT OPTION
-        $attributes['thumbnail'] = request()->file('thumbnail')->storePublicly('thumbnails', ['disk' => 'public']);
-        $attributes['user_id'] = auth()->id();
-        Post::create($attributes);
-        return redirect('/')->with('success', 'Post has been created!');
     }
+
 }
