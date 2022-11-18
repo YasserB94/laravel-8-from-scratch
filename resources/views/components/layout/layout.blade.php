@@ -29,6 +29,7 @@
                     <x-slot:trigger>
                         <button class="font-bold uppercase">Hi, {{auth()->user()->name}} !</button>
                     </x-slot:trigger>
+                    @can('admin')
                     <x-layout.dropdown-list-item
                         href="/admin/posts"
                         :active="request()->is('admin/dashboard')">Manage Posts
@@ -37,6 +38,7 @@
                         href="/admin/posts/create"
                         :active="request()->is('admin/posts/create')">New Post
                     </x-layout.dropdown-list-item>
+                    @endcan
                     <x-layout.dropdown-list-item href="#"
                     x-data="{}" @click.prevent="document.querySelector('#logout-form').submit();"
                     >Logout
