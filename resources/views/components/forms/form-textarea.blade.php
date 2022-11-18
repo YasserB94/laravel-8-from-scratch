@@ -11,7 +11,7 @@
               name="{{$name}}"
               id="{{$name}}"
               required
-    >{{old($name)}}</textarea>
+    >{{$slot??old($name)}}</textarea>
     @error($name)
     <p class="text-red-500 text-xs">{{$message}}</p>
     @enderror

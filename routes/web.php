@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
+use App\Http\Controllers\{AdminPostController,
     CommentController,
     NewsletterController,
     PostController,
@@ -35,5 +35,9 @@ Route::post('subscribe',NewsletterController::class);
 Route::post('/posts/subscribe',NewsletterController::class);
 
 //ADMIN ROUTES
-Route::get('admin/posts/create',[PostController::class,'create'])->middleware('admin');
-Route::post('admin/posts',[PostController::class,'store'])->middleware('admin');
+Route::get('admin/posts/create',[AdminPostController::class,'create'])->middleware('admin');
+Route::get('admin/posts',[AdminPostController::class,'index'])->middleware('admin');
+Route::get('admin/posts/{post}/edit',[AdminPostController::class,'edit'])->middleware('admin');
+Route::post('admin/posts',[AdminPostController::class,'store'])->middleware('admin');
+Route::patch('admin/posts/{post}',[AdminPostController::class,'update'])->middleware('admin');
+Route::delete('admin/posts/{post}',[AdminPostController::class,'destroy'])->middleware('admin');

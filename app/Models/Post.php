@@ -19,6 +19,7 @@ class Post extends Model
     //When a Post is created -> Boot
     protected static function boot()
     {
+        //Can also be registered in an observer
         //Run Boot in the Parent (Model class)
         parent::boot();
         //Register a callback function to run upon creation

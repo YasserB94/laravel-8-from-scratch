@@ -1,3 +1,4 @@
+
 <div {{ $attributes }}>
     <label class="block text-sm uppercase font-semibold  mt-2 ml-1"
            for="category_id">

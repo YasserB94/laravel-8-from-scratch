@@ -29,11 +29,16 @@
                     <x-slot:trigger>
                         <button class="font-bold uppercase">Hi, {{auth()->user()->name}} !</button>
                     </x-slot:trigger>
-                    <x-layout.dropdown-list-item href="/admin/posts/create"
-                                                 :active="request()->is('admin/posts/create')">Create a Post!
+                    <x-layout.dropdown-list-item
+                        href="/admin/posts"
+                        :active="request()->is('admin/dashboard')">Manage Posts
+                    </x-layout.dropdown-list-item>
+                    <x-layout.dropdown-list-item
+                        href="/admin/posts/create"
+                        :active="request()->is('admin/posts/create')">New Post
                     </x-layout.dropdown-list-item>
                     <x-layout.dropdown-list-item href="#"
-                                                 x-data="{}" @click.prevent="document.querySelector('#logout-form').submit();"
+                    x-data="{}" @click.prevent="document.querySelector('#logout-form').submit();"
                     >Logout
                     </x-layout.dropdown-list-item>
                     <form method="POST" action="/logout" id="logout-form">
